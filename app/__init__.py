@@ -5,6 +5,6 @@ def create_app():
 
     # Import and register blueprints/routes
     from .routes import api
-    app.register_blueprint(api, url_prefix='/api')
+    app.register_blueprint(api, url_prefix='/')
 
     return app

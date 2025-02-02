@@ -1,11 +1,10 @@
 import os
 import requests
 import logging
-from flask import Blueprint, redirect, request, jsonify, session
+from flask import Blueprint, redirect, request, jsonify
 
 # Initialize Blueprint for API
 api = Blueprint("api", __name__)
-api.secret_key = os.urandom(24)  # Necessary for session storage
 
 # Upwork OAuth credentials
 CLIENT_ID = "1ff9ff298eca330521db8ed3dd41b68b"
@@ -61,14 +60,8 @@ def callback():
         tokens = response.json()
         logger.debug(f"Tokens received: {tokens}")
 
-        # Store tokens in session (Replace with DB for production)
-        session["access_token"] = tokens.get("access_token")
-        session["refresh_token"] = tokens.get("refresh_token")
-        logger.info("Tokens stored successfully in session")
-
         print("Access Token: " + tokens.get("access_token"))
         print("Refresh Token: " + tokens.get("refresh_token"))
-
 
         return jsonify({
             "status": "success",
@@ -98,7 +91,7 @@ def callback():
 @api.route("/refresh")
 def refresh():
     try:
-        refresh_token = session.get("refresh_token")
+        refresh_token = "oauth2v2_9f4a241071c43252b3f7d3be257b0af4"
         if not refresh_token:
             logger.error("No refresh token available")
             return jsonify({"status": "error", "message": "No refresh token available"}), 400
@@ -119,11 +112,6 @@ def refresh():
 
         tokens = response.json()
         logger.debug(f"Tokens refreshed: {tokens}")
-
-        # Update session with new tokens
-        session["access_token"] = tokens.get("access_token")
-        session["refresh_token"] = tokens.get("refresh_token")
-        logger.info("Tokens refreshed successfully in session")
 
         return jsonify({
             "status": "success",

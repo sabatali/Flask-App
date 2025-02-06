@@ -91,7 +91,7 @@ def callback():
 @api.route("/refresh")
 def refresh():
     try:
-        refresh_token = "oauth2v2_ddc234203129130ec24b021613cfaeca"
+        refresh_token = "oauth2v2_4571f8f53eb6ffffff0da136b36c0e36"
         if not refresh_token:
             logger.error("No refresh token available")
             return jsonify({"status": "error", "message": "No refresh token available"}), 400

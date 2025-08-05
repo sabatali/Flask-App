@@ -7,8 +7,8 @@ from flask import Blueprint, redirect, request, jsonify
 api = Blueprint("api", __name__)
 
 # Upwork OAuth credentials
-CLIENT_ID = "1ff9ff298eca330521db8ed3dd41b68b"
-CLIENT_SECRET = "a3d3deef4e7f25a8"
+CLIENT_ID = "d32f8b5da7cf06845c5d2f12f499055d"
+CLIENT_SECRET = "7028b54fc4111c07"
 REDIRECT_URI = "https://upwork-nhnb.onrender.com/callback"
 UPWORK_TOKEN_URL = "https://www.upwork.com/api/v3/oauth2/token"
 

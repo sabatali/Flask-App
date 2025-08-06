@@ -91,7 +91,7 @@ def callback():
 @api.route("/refresh")
 def refresh():
     try:
-        refresh_token = "oauth2v2_b1cc8b45ab3613ba202e625b06559264"
+        refresh_token = "oauth2v2_d3ba3799050883b080446fc34c29257e"
         if not refresh_token:
             logger.error("No refresh token available")
             return jsonify({"status": "error", "message": "No refresh token available"}), 400
@@ -102,8 +102,8 @@ def refresh():
             UPWORK_TOKEN_URL,
             data={
                 "grant_type": "refresh_token",
-                "client_id": CLIENT_ID,
-                "client_secret": CLIENT_SECRET,
+                "client_id": "d32f8b5da7cf06845c5d2f12f499055d",
+                "client_secret": "7028b54fc4111c07",
                 "refresh_token": refresh_token,
             },
             headers={"Content-Type": "application/x-www-form-urlencoded"},
